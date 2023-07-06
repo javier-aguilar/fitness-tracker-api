@@ -5,7 +5,7 @@ class Api::V1::LogsController < ApplicationController
     end
 
     def show
-        logs = Log.where(user_id: params[:id])
+        logs = Log.where(user_id: params[:id]).order('created_at DESC')
         render json: {status: "SUCCESS", message: "Fetched logs successfully", data: logs}, status: :ok
     end
 end
